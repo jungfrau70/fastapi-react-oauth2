@@ -12,6 +12,7 @@ class Settings(BaseSettings):
     HOST: str = "localhost"
 
     GOOGLE_OAUTH2_CLIENT_ID: str
+    GOOGLE_OAUTH2_CLIENT_SECRET_JSON: str
     GOOGLE_OAUTH2_CLIENT_SECRET: str
 
     SWAP_TOKEN_ENDPOINT: str
@@ -51,6 +52,21 @@ class Settings(BaseSettings):
     NAVER_CLIENT_ID: str = None
     NAVER_CLIENT_SECRET: str = None
     NAVER_CALLBACK_URL: str = None
+
+
+    MAIL_USERNAME : str = None
+    MAIL_FROM : str = None
+    MAIL_PASSWORD : str = None
+    MAIL_PORT : str = None
+    MAIL_SERVER : str = None
+    MAIL_STARTTLS : str = None
+    MAIL_SSL_TLS : str = None
+    USE_CREDENTIALS : str = None
+    VALIDATE_CERTS : str = None
+
+    SECRET  : str = None
+    SITE_URL : str = None
+    SITE_NAME : str = None
 
     class Config:
         env_file = "app/.env"

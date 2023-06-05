@@ -40,8 +40,7 @@ from starlette.status import HTTP_403_FORBIDDEN
 from starlette.responses import RedirectResponse, JSONResponse, HTMLResponse
 from starlette.requests import Request
 
-from common.consts import JWT_SECRET, JWT_ALGORITHM
-from models import SnsType, Token, UserToken
+from app.models import SnsType, Token, UserToken
 from fastapi import APIRouter, Depends, HTTPException, status
 from fastapi.encoders import jsonable_encoder
 from fastapi.exceptions import HTTPException
@@ -53,34 +52,32 @@ from fastapi.security import (
 )
 
 from passlib.context import CryptContext
-from models import *
-from utils.google_login import google_login_javascript_client, google_login_javascript_server
+from app.models import *
 
 # templates
 from fastapi.templating import Jinja2Templates
 
 import httplib2
 from oauth2client import client
-from google.oauth2 import id_token
-from google.auth.transport import requests
 
-# from dotenv import dotenv_values
-# config_credentials = dotenv_values(".env")
+from app.models import *
+from app.configs import Configs
 
-from common.config import get_settings
-SWAP_TOKEN_ENDPOINT = get_settings().SWAP_TOKEN_ENDPOINT
-CLIENT_SECRETS_JSON = get_settings().CLIENT_SECRETS_JSON
-CLIENT_ID = get_settings().CLIENT_ID
-ACCESS_TOKEN_EXPIRE_MINUTES = get_settings().ACCESS_TOKEN_EXPIRE_MINUTES
-COOKIE_AUTHORIZATION_NAME = get_settings().COOKIE_AUTHORIZATION_NAME
-COOKIE_DOMAIN = get_settings().COOKIE_DOMAIN
-SECRET_KEY = get_settings().SECRET_KEY
-ALGORITHM = get_settings().ALGORITHM
+SECRET_KEY = Configs.SECRET_KEY
+ALGORITHM = Configs.ALGORITHM
 
-PROTOCOL = get_settings().PROTOCOL
-FULL_HOST_NAME = get_settings().FULL_HOST_NAME
-PORT_NUMBER = get_settings().PORT_NUMBER
-# API_LOCATION = f"{PROTOCOL}{FULL_HOST_NAME}:{PORT_NUMBER}"
+GOOGLE_OAUTH2_CLIENT_ID = Configs.GOOGLE_OAUTH2_CLIENT_ID
+GOOGLE_OAUTH2_CLIENT_SECRET_JSON = Configs.GOOGLE_OAUTH2_CLIENT_SECRET_JSON
+
+SWAP_TOKEN_ENDPOINT = Configs.SWAP_TOKEN_ENDPOINT
+ACCESS_TOKEN_EXPIRE_MINUTES = Configs.ACCESS_TOKEN_EXPIRE_MINUTES
+# COOKIE_AUTHORIZATION_NAME = Configs.COOKIE_AUTHORIZATION_NAME
+# COOKIE_DOMAIN = Configs.COOKIE_DOMAIN
+SECRET_KEY = Configs.SECRET_KEY
+ALGORITHM = Configs.ALGORITHM
+PROTOCOL = Configs.PROTOCOL
+FULL_HOST_NAME = Configs.FULL_HOST_NAME
+PORT_NUMBER = Configs.PORT_NUMBER
 
 router = APIRouter(
     prefix="",

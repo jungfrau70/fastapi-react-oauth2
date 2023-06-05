@@ -18,15 +18,12 @@ from fastapi import File, UploadFile
 import secrets
 from PIL import Image
 
-from models import *
+from app.models import *
 
-# from dotenv import dotenv_values
-# config_credentials = dotenv_values(".env")
-
-from common.config import get_settings
-SECRET_KEY = get_settings().SECRET_KEY
-ALGORITHM = get_settings().ALGORITHM
-SITE_URL = get_settings().SITE_URL
+from  app.configs import Configs
+SECRET_KEY = Configs.SECRET_KEY
+ALGORITHM = Configs.ALGORITHM
+SITE_URL = Configs.SITE_URL
 
 router = APIRouter(
     prefix="/profile",

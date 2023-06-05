@@ -18,15 +18,13 @@ from fastapi import File, UploadFile
 import secrets
 from PIL import Image
 
-from models import *
 from dateutil.relativedelta import relativedelta
 
-# from dotenv import dotenv_values
-# config_credentials = dotenv_values(".env")
+from app.models import *
 
-from common.config import get_settings
-SECRET_KEY = get_settings().SECRET_KEY
-ALGORITHM = get_settings().ALGORITHM
+from  app.configs import Configs
+SECRET_KEY = Configs.SECRET_KEY
+ALGORITHM = Configs.ALGORITHM
 
 router = APIRouter(
     prefix="/lvl_purchase",

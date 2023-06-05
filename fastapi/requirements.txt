@@ -43,3 +43,8 @@ yarl==1.8.1
 fastapi-users[beanie]
 tortoise-orm
 databases[postgresql]
+
+python-dateutil
+Pillow
+numpy
+fastapi-mail

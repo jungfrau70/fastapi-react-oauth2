@@ -1,33 +1,33 @@
 from typing import List
 
-from models import User
+from app.models import User
 from fastapi_mail import FastMail, MessageSchema, ConnectionConfig
 from pydantic import EmailStr
 import jwt
 
-from common.config import get_settings
+from  app.configs import Configs
 
-SITE_URL = get_settings().SITE_URL
-SITE_NAME = get_settings().SITE_NAME
-SECRET_KEY = get_settings().SECRET_KEY
-ALGORITHM = get_settings().ALGORITHM
+SITE_URL = Configs.SITE_URL
+SITE_NAME = Configs.SITE_NAME
+SECRET_KEY = Configs.SECRET_KEY
+ALGORITHM = Configs.ALGORITHM
 
-PROTOCOL = get_settings().PROTOCOL
-FULL_HOST_NAME = get_settings().FULL_HOST_NAME
-PORT_NUMBER = get_settings().PORT_NUMBER
+PROTOCOL = Configs.PROTOCOL
+FULL_HOST_NAME = Configs.FULL_HOST_NAME
+PORT_NUMBER = Configs.PORT_NUMBER
 API_LOCATION = f"{PROTOCOL}{FULL_HOST_NAME}:{PORT_NUMBER}"
 
 
 conf = ConnectionConfig(
-    MAIL_USERNAME=get_settings().MAIL_USERNAME,
-    MAIL_PASSWORD=get_settings().MAIL_PASSWORD,
-    MAIL_FROM=get_settings().MAIL_FROM,
-    MAIL_PORT=get_settings().MAIL_PORT,
-    MAIL_SERVER=get_settings().MAIL_SERVER,
-    MAIL_STARTTLS=get_settings().MAIL_STARTTLS,
-    MAIL_SSL_TLS=get_settings().MAIL_SSL_TLS,
-    USE_CREDENTIALS=get_settings().USE_CREDENTIALS,
-    VALIDATE_CERTS=get_settings().VALIDATE_CERTS
+    MAIL_USERNAME=Configs.MAIL_USERNAME,
+    MAIL_PASSWORD=Configs.MAIL_PASSWORD,
+    MAIL_FROM=Configs.MAIL_FROM,
+    MAIL_PORT=Configs.MAIL_PORT,
+    MAIL_SERVER=Configs.MAIL_SERVER,
+    MAIL_STARTTLS=Configs.MAIL_STARTTLS,
+    MAIL_SSL_TLS=Configs.MAIL_SSL_TLS,
+    USE_CREDENTIALS=Configs.USE_CREDENTIALS,
+    VALIDATE_CERTS=Configs.VALIDATE_CERTS
 )
 
 

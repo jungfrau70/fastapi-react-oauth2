@@ -37,18 +37,16 @@ from datetime import datetime
 from dateutil.relativedelta import relativedelta
 from passlib.context import CryptContext
 
-from models import *
-from utils.email import (
+from app.models import *
+from ..utils.email import (
     send_mail
 )
 
+from app.models import *
 
-# from dotenv import dotenv_values
-# config_credentials = dotenv_values(".env")
-
-from common.config import get_settings
-SECRET_KEY = get_settings().SECRET_KEY
-ALGORITHM = get_settings().ALGORITHM
+from  app.configs import Configs
+SECRET_KEY = Configs.SECRET_KEY
+ALGORITHM = Configs.ALGORITHM
 
 router = APIRouter(
     prefix="",

@@ -11,9 +11,9 @@ GOOGLE_SCOPE_EMAIL = "https://www.googleapis.com/auth/userinfo.email"
 google_oauth_client = GoogleOAuth2(
     client_id=Configs.GOOGLE_OAUTH2_CLIENT_ID,
     client_secret=Configs.GOOGLE_OAUTH2_CLIENT_SECRET,
-    scope=[
-        GOOGLE_SCOPE_PROFILE, GOOGLE_SCOPE_EMAIL, "openid"
-    ],
+    # scope=[
+    #     GOOGLE_SCOPE_PROFILE, GOOGLE_SCOPE_EMAIL, "openid"
+    # ],
 )
 
 google_oauth_router = fastapi_users.get_oauth_router(

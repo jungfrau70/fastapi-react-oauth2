@@ -30,7 +30,9 @@ except FileExistsError:
    pass
 app.mount("/static", StaticFiles(directory="./app/static"), name="static")
 
+from app.auth.google.routes import google_oauth_router
 # routers
+app.include_router(google_oauth_router, prefix="/auth/google", tags=["auth"])
 app.include_router(auth.router)
 app.include_router(user.router)
 app.include_router(user_profile.router)
